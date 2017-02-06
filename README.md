@@ -90,6 +90,6 @@ The drive.py script was used to evaluate the model trained above. It interacts w
 
 **RESULT: The car drove correctly on track 1 without driving off the road**
 
-I am attaching the recording of my model driving the car.
+Here is the link to the recording of my model driving the car.
 
 
