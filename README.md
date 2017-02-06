@@ -32,8 +32,13 @@ The model can be trained using the following command. The comments in the model.
 ###Model Architecture and Training Strategy
 I started off with comma.ai Steering Angle Prediction Model. But after a lot of experimentation and tuning, I decided to reduce the number of parameters while making the network deeper. Before I discuss my architecture, I discuss data acquisition and data preprocessing technique that I used. I found that image preprocessing and augmentation played an important role in making sure that the car drives all the way around the track. 
 
-#### 1. Data Preprocessing and Augmentation
+#### 1. Data Acquisiton, Preprocessing and Augmentation
 I did not have an analog controller to record training data, and realized that driving-data from keyboard was not smooth. It did not perform well in training the model by itself. So I used the training data released by Udacity in conjunction with the data I collected myself. I collected mostly recovery data for "wandering off" scenarios.
 
+The simulator dumps references to the image files as well as the telemetry data into driving_log.csv file. For each frame-steering angle, there is an image each from center, left and right cameras. The left and right cameras were used as extra training data for scenarios where the car is off-center. Since the steering angle provided is actual w.r.t center, bias needs to be added for left/right to direct the vehicle to ground-truth.
 
+   **For left camera image**: I added 0.15 offset (add bias to steer right) to the steering angle
+   
+   **For right camera image**: I subtracted 0.15 offset (add bias to steer left) to the steering angle
+   
 
