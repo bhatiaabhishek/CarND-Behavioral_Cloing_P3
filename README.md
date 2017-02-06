@@ -35,9 +35,9 @@ I started off with comma.ai Steering Angle Prediction Model. But after a lot of 
 #### 1. Data Acquisiton, Preprocessing and Augmentation
 I did not have an analog controller to record training data, and realized that driving-data from keyboard was not smooth. It did not perform well in training the model by itself. So I used the training data released by Udacity in conjunction with the data I collected myself. 
 
- *I collected mostly recovery data for "wandering off" scenarios. I turned off recording when I let my car wander to the side, and then turned recording ON while I gracefully steered to the center. I repeated this for all the sharp turns as well.
+--> I collected mostly recovery data for "wandering off" scenarios. I turned off recording when I let my car wander to the side, and then turned recording ON while I gracefully steered to the center. I repeated this for all the sharp turns as well.
     
- *Since the track is mostly left-turn biased, I also collected recovery-data in the opposite direction to balance it out.
+--> Since the track is mostly left-turn biased, I also collected recovery-data in the opposite direction to balance it out.
 
 The simulator dumps references to the image files as well as the telemetry data into driving_log.csv file. For each frame-steering angle, there is an image each from center, left and right cameras. The left and right cameras were used as extra training data for scenarios where the car is off-center. Since the steering angle provided is actual w.r.t center, bias needs to be added for left/right to direct the vehicle to ground-truth.
 
@@ -45,6 +45,10 @@ The simulator dumps references to the image files as well as the telemetry data 
    
    **For right camera image**: I subtracted 0.15 offset (add bias to steer left) to the steering angle
    
- *From the training data I collected, I discard the "center" images with steering angle = 0, since that it does not give much information. I already rely on udacity data for straight-driving behavior. I keep the left and right images with 0.15 offset.
+--> From the training data I collected, I discard the "center" images with steering angle = 0, since that it does not give much information. I already rely on udacity data for straight-driving behavior. I keep the left and right images with 0.15 offset.
    
- *To generate more data and to remove bias towards any particular direction, I flipped 50% of the images with abs(steering angle) > 0.1, and added them to the training data.
+--> To generate more data and to remove bias towards any particular direction, I flipped 50% of the images with abs(steering angle) > 0.1, and added them to the training data.
+
+--> I cropped each image from the top to remove un-interesting artifacts such as trees etc. The entire width of the image was preserved.
+
+--> I used cv2.resize w/ INTER_AREA interpolation to resize all images to 32x32x3 (RGB format).
