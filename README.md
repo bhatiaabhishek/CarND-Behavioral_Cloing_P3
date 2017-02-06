@@ -21,7 +21,7 @@ The following are the files that are included in this project:
      
 ###Command-Line-Interface
 ####Training the network
-The model can be trained using the following command. "data_dir" argument is used to pass on the name of the directory which was used to dump driving data from the simulator. "batch" represents the batch size and "epoch" is the number of epochs desired. The comments in the model.py file explain the code.
+The model can be trained using the following command. The comments in the model.py file explain the code. The model output files are dumped in outputs/steering_model/ to prevent overwriting any existing models in the current directory.
 
 `$ python model.py --data_dir=driving_data --batch=64 --epoch=10`
 
@@ -29,7 +29,7 @@ The model can be trained using the following command. "data_dir" argument is use
 
 `$ python drive.py model.json`
 
-
+###Model Architecture
 
 
 
