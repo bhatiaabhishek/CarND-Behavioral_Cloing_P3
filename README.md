@@ -60,14 +60,23 @@ The simulator dumps references to the image files as well as the telemetry data 
 The following is the architecture I finally arrived at. It was coded using Keras (w/ TensorFlow). The validation loss
 
 **Input:** The model accepts 32x32x3 (RGB format) data
+
 **Layer 0:** 1x1 2D Convolution w/ ELU activation (This normalizes the colorspace)
+
 **Layer 1:** 3x3x32 2D Convolution w/ 2x2 Maxpool and ELU activation
+
 **Layer 2:** 3x3x64 2D Convolution w/ 2x2 Maxpool and ELU activation
+
 **Layer 3:** 3x3x128 2D Convolution w/ ELU activation and **dropout**
+
 **Flatten:** 1024 output
+
 **Layer 4:** Fully Connected Layer -- 1024 output w/ **dropout (0.5)** and ELU activation
+
 **Layer 5:** Fully Connected Layer -- 512 output w/ **dropout (0.5)** and ELU activation
+
 **Layer 4:** Fully Connected Layer -- 128 output w/ **dropout (0.5)** and ELU activation
+
 **Output:** Fully Connected with 1 output value
 
 
