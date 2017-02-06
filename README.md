@@ -21,7 +21,7 @@ The following are the files that are included in this project:
      
 ###Command-Line-Interface
 ####Training the network
-The model can be trained using the following command. The comments in the model.py file explain the code. The model output files are dumped in outputs/steering_model/ to prevent overwriting any existing models in the current directory.
+The model can be trained using the following command. The comments in the model.py file explain the code. The model output files are dumped in outputs/steering_model/ to prevent overwriting any existing models in the current directory. The [udacity data](https://d17h27t6h515a5.cloudfront.net/topher/2016/December/584f6edd_data/data.zip) should be present in "data" folder in the running directory. The "data_dir" argument should be set to the directory where the simulator's data is dumped.
 
 `$ python model.py --data_dir=driving_data --batch=64 --epoch=10`
 
@@ -82,14 +82,14 @@ The following is the architecture I finally arrived at. It was coded using Keras
 
 #### 3. Training
 
-After preprocessing and augmentation, I had ~35k images to train with. The Adam optimizer was used with mean-squared error loss. Concatenated data from udacity and my simulator was passed onto the model with 20% of the data as validation data. After some experiments, I settled with 10 epochs and 64 batch_size. The data was shuffled for every epoch. If I ran more epochs, it led to car driving off the cliff.
+The model was trained only on track 1 as explained in part 1. After preprocessing and augmentation, I had ~35k images to train with. The Adam optimizer was used with mean-squared error loss. Concatenated data from udacity and my simulator was passed onto the model with 20% of the data as validation data. After some experiments, I settled with 10 epochs and 64 batch_size. The data was shuffled for every epoch. If I ran more epochs, it led to car driving off the cliff.
 
 #### 4. Simulation
 
 The drive.py script was used to evaluate the model trained above. It interacts with the simulator by grabbing center camera images, passing through the model, and returning the telemetry data (steering angle and throttle). The throttle is hard-coded as 0.2. I modified drive.py to crop and resize the streaming images in the same way as while training.
 
-**RESULT: The car drove correctly on track 1 without driving off the road**
+**RESULT: The car drove correctly on track 1 without driving off the road. It was also able to drive for ~40 seconds @0.2 throttle on track 2 even though the model was trained only on track 1**
 
-Here is the link to the recording of my model driving the car.
+Here is the [link](https://youtu.be/P0yNdVIwANw) to the recording of my model driving the car on track 1.
 
 
