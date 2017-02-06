@@ -16,7 +16,6 @@ The following are the files that are included in this project:
      * model.json - The model architecture.
      * model.h5 - The model weights.
      * README.md - Project report
-     * P3_recording - A recording of the "model" driving the car around the track
      * video.py - Script to convert a series of images to ".mp4" format
      
 ###Command-Line-Interface
