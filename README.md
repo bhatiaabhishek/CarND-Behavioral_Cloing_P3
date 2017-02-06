@@ -80,3 +80,6 @@ The following is the architecture I finally arrived at. It was coded using Keras
 **Output:** Fully Connected with 1 output value
 
 
+#### 3. Training
+
+The Adam optimizer was used with mean-squared error loss. Concatenated data from udacity and my simulator was passed onto the model with 20% of the data as validation data. After some experiments, I settled with 10 epochs and 64 batch_size. The data was shuffled for every epoch. If I ran more epochs, it led to car driving off the cliff.
