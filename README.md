@@ -82,4 +82,14 @@ The following is the architecture I finally arrived at. It was coded using Keras
 
 #### 3. Training
 
-The Adam optimizer was used with mean-squared error loss. Concatenated data from udacity and my simulator was passed onto the model with 20% of the data as validation data. After some experiments, I settled with 10 epochs and 64 batch_size. The data was shuffled for every epoch. If I ran more epochs, it led to car driving off the cliff.
+After preprocessing and augmentation, I had ~35k images to train with. The Adam optimizer was used with mean-squared error loss. Concatenated data from udacity and my simulator was passed onto the model with 20% of the data as validation data. After some experiments, I settled with 10 epochs and 64 batch_size. The data was shuffled for every epoch. If I ran more epochs, it led to car driving off the cliff.
+
+#### 4. Simulation
+
+The drive.py script was used to evaluate the model trained above. It interacts with the simulator by grabbing center camera images, passing through the model, and returning the telemetry data (steering angle and throttle). The throttle is hard-coded as 0.2. I modified drive.py to crop and resize the streaming images in the same way as while training.
+
+**RESULT: The car drove correctly on track 1 without driving off the road**
+
+I am attaching the recording of my model driving the car.
+
+
