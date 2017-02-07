@@ -45,7 +45,7 @@ For example, there was one portion of the track where the car was driving off th
 
 Also, to handle situations where the car wandered off to the edge of the road, the model had to be taught to recover. 
 
-<img src="https://github.com/bhatiaabhishek/CarND-Behavioral_Cloning_P3/blob/master/recover_1.png" width="30%"> <img src="https://github.com/bhatiaabhishek/CarND-Behavioral_Cloning_P3/blob/master/recover_1.png" width="30%"> <img src="https://github.com/bhatiaabhishek/CarND-Behavioral_Cloning_P3/blob/master/recover_1.png" width="30%">
+<img src="https://github.com/bhatiaabhishek/CarND-Behavioral_Cloning_P3/blob/master/recover_1.png" width="30%"> <img src="https://github.com/bhatiaabhishek/CarND-Behavioral_Cloning_P3/blob/master/recover_2.png" width="30%"> <img src="https://github.com/bhatiaabhishek/CarND-Behavioral_Cloning_P3/blob/master/recover_3.png" width="30%">
 
 
 The simulator dumps references to the image files as well as the telemetry data into driving_log.csv file. For each frame-steering angle, there is an image each from center, left and right cameras. The left and right cameras were used as extra training data for scenarios where the car is off-center. Since the steering angle provided is actual w.r.t center, bias needs to be added for left/right to direct the vehicle to ground-truth.
