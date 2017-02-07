@@ -38,6 +38,12 @@ I did not have an analog controller to record training data, and realized that d
     
 --> Since the track is mostly left-turn biased, I also collected recovery-data by driving in the opposite direction to balance it out.
 
+To recover from situations where the car has wandered to the side of the road, the car was trained as depicted below.
+
+![recover 1](https://github.com/bhatiaabhishek/CarND-Behavioral_Cloning_P3/blob/master/recover_1.png = 250x250) ![](https://github.com/bhatiaabhishek/CarND-Behavioral_Cloning_P3/blob/master/recover_2.png = 250x250) ![](https://github.com/bhatiaabhishek/CarND-Behavioral_Cloning_P3/blob/master/recover_3.png = 250x250)
+
+For example, there was one portion of the track where the car was driving off the cliff everytime. The following iamges depict the way the model was trained for this scenario.
+
 The simulator dumps references to the image files as well as the telemetry data into driving_log.csv file. For each frame-steering angle, there is an image each from center, left and right cameras. The left and right cameras were used as extra training data for scenarios where the car is off-center. Since the steering angle provided is actual w.r.t center, bias needs to be added for left/right to direct the vehicle to ground-truth.
 
    **For left camera image**: I added 0.15 offset (add bias to steer right) to the steering angle
@@ -56,7 +62,7 @@ The simulator dumps references to the image files as well as the telemetry data 
 
 #### 2. Model Architecture
 
-The following is the architecture I finally arrived at. It was coded using Keras (w/ TensorFlow). The validation loss
+The following is the architecture I finally arrived at. The use of "ELU" was motivated by this paper: [FAST AND ACCURATE DEEP NETWORK LEARNING BY EXPONENTIAL LINEAR UNITS ELUS](https://arxiv.org/pdf/1511.07289v1.pdf). It was coded using Keras (w/ TensorFlow). The validation loss
 
 **Input:** The model accepts 32x32x3 (RGB format) data
 
@@ -81,7 +87,7 @@ The following is the architecture I finally arrived at. It was coded using Keras
 
 #### 3. Training
 
-The model was trained only on track 1 as explained in part 1. After preprocessing and augmentation, I had ~35k images to train with. The Adam optimizer was used with mean-squared error loss. Concatenated data from udacity and my simulator was passed onto the model with 20% of the data as validation data. After some experiments, I settled with 10 epochs and 64 batch_size. The data was shuffled for every epoch. If I ran more epochs, it led to car driving off the cliff.
+The model was trained only on track 1 as explained in section 1. After preprocessing and augmentation, I had ~35k images to train with. The Adam optimizer was used with mean-squared error loss. Concatenated data from udacity and my simulator was passed onto the model with 20% of the data as validation data. After some experiments, I settled with 10 epochs and 64 batch_size. The data was shuffled for every epoch. If I ran more epochs, it led to car driving off the cliff.
 
 #### 4. Simulation
 
