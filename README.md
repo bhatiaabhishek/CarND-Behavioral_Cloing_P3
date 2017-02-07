@@ -39,10 +39,13 @@ I did not have an analog controller to record training data, and realized that d
 --> Since the track is mostly left-turn biased, I also collected recovery-data by driving in the opposite direction to balance it out.
 
 
-For example, there was one portion of the track where the car was driving off the cliff everytime. I stood at the same portion, turned on recording, turned steering to the right, inched forward and then turned off recording.
+For example, there was one portion of the track where the car was driving off the cliff everytime. I stood at the same portion, turned on recording, turned steering sharply to the right, inched forward and then turned off recording.
 
 <img src="https://github.com/bhatiaabhishek/CarND-Behavioral_Cloning_P3/blob/master/recover_1_1.png" width="30%"> <img src="https://github.com/bhatiaabhishek/CarND-Behavioral_Cloning_P3/blob/master/recover_1_2.png" width="30%"> <img src="https://github.com/bhatiaabhishek/CarND-Behavioral_Cloning_P3/blob/master/recover_1_3.png" width="30%">
 
+Also, to handle situations where the car wandered off to the edge of the road, the model had to be taught to recover. 
+
+<img src="https://github.com/bhatiaabhishek/CarND-Behavioral_Cloning_P3/blob/master/recover_1.png" width="30%"> <img src="https://github.com/bhatiaabhishek/CarND-Behavioral_Cloning_P3/blob/master/recover_1.png" width="30%"> <img src="https://github.com/bhatiaabhishek/CarND-Behavioral_Cloning_P3/blob/master/recover_1.png" width="30%">
 
 
 The simulator dumps references to the image files as well as the telemetry data into driving_log.csv file. For each frame-steering angle, there is an image each from center, left and right cameras. The left and right cameras were used as extra training data for scenarios where the car is off-center. Since the steering angle provided is actual w.r.t center, bias needs to be added for left/right to direct the vehicle to ground-truth.
