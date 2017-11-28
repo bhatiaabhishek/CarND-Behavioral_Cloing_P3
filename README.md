@@ -1,6 +1,6 @@
 # Behavioral Cloning using Deep Learning
-**P3 Submission for Self-Driving Car Nanodegree**
-###Overview
+
+### Overview
 The overall methodology followed in this project is as follows:
  1. Use the simulator to collect data of good driving behavior
  2. Build, a convolution neural network in Keras that predicts steering angles from images
