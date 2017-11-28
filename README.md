@@ -1,4 +1,4 @@
-#Behavioral Cloning using Deep Learning
+# Behavioral Cloning using Deep Learning
 **P3 Submission for Self-Driving Car Nanodegree**
 ###Overview
 The overall methodology followed in this project is as follows:
@@ -8,7 +8,7 @@ The overall methodology followed in this project is as follows:
  4. Test that the model successfully drives around track one without leaving the road
  5. If there are any "accidents", fine-tune the hyperparameters, the architecture and get more data on corner cases
  
-###Deliverables
+### Deliverables
 The following are the files that are included in this project:
  
      * model.py - The script used to create and train the model.
@@ -18,17 +18,17 @@ The following are the files that are included in this project:
      * README.md - Project report
      * video.py - Script to convert a series of images to ".mp4" format
      
-###Command-Line-Interface
-####Training the network
+### Command-Line-Interface
+#### Training the network
 The model can be trained using the following command. The comments in the model.py file explain the code. The model output files are dumped in outputs/steering_model/ to prevent overwriting any existing models in the current directory. The [udacity data](https://d17h27t6h515a5.cloudfront.net/topher/2016/December/584f6edd_data/data.zip) should be present in "data" folder in the running directory. The "data_dir" argument should be set to the directory where the simulator's data is dumped.
 
 `$ python model.py --data_dir=driving_data --batch=64 --epoch=10`
 
-####Client to send driving signals to the Simulator in Autonomous mode
+#### Client to send driving signals to the Simulator in Autonomous mode
 
 `$ python drive.py model.json`
 
-###Model Architecture and Training Strategy
+### Model Architecture and Training Strategy
 I started off with comma.ai Steering Angle Prediction Model. But after a lot of experimentation and tuning, I decided to reduce the number of parameters while making the network deeper. Initially the validation loss was much worse than the training loss. So I added more dropout layers in the Fully-Connected-Layers. This helped reduce **overfitting**. Before I discuss my architecture, I discuss data acquisition and data preprocessing technique that I used. I found that image preprocessing and augmentation played an important role in making sure that the car drives all the way around the track. 
 
 #### 1. Data Acquisition, Preprocessing and Augmentation
